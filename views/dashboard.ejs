@@ -1,0 +1,31 @@
+<%- include("partials/header.ejs") %>
+
+<!-- Full Page Image Header with Vertically Centered Content -->
+<section class="timeline-section">
+  <div class="container">
+    <h2 class="timeline-title">Your Feed</h2>
+
+    <!-- New Post Form -->
+    <div class="new-post">
+      <form action="/post" method="POST">
+        <textarea name="content" class="post-input" placeholder="What's on your mind?" required></textarea>
+        <button type="submit" class="btn">Post</button>
+      </form>
+    </div>
+
+    <!-- Timeline Posts -->
+    <div class="timeline">
+      <% posts.forEach(post => { %>
+        <div class="post">
+          <div class="post-header">
+            <span class="username">@<%= post.username %></span>
+            <span class="timestamp"><%= post.timestamp %></span>
+          </div>
+          <p class="post-content"><%= post.content %></p>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<%- include("partials/footer.ejs") %>
